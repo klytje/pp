@@ -1,0 +1,12 @@
+set encoding utf8
+set title "Error function"
+set term svg
+set out "erf.svg"
+set xlabel "x"
+set ylabel "y"
+set xzeroaxis
+set yzeroaxis
+set tics out
+set key bottom right
+plot "erf.txt" with lines title "erf(x)", \
+"erf_table.txt" with points pt 7 title "tabulated"

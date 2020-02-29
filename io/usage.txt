@@ -1,0 +1,3 @@
+handles both vertical and horizontal input formats
+echo 1 2 3 4 | mono pipe.exe
+cat test.txt | mono pipe.exe

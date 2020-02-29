@@ -1,0 +1,11 @@
+My max int is 2147483647!
+My min int is -2147483648!
+int.MaxValue: 2147483647, int.minvalue: -2147483648
+double epsilon: 2.22044604925031E-16, float epsilon: 1.192093E-07
+2^-52: 2.22044604925031E-16, 2^-23: 1.19209289550781E-07
+Harmonic sum for floats:
+Summing up: 15.40368
+Summing down: 18.80792
+Harmonic sum for floats:
+Summing up: 21.3716310812349
+Summing down: 21.3716310812321

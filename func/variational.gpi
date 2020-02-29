@@ -1,0 +1,11 @@
+set encoding utf8
+set title "Variational method"
+set term svg
+set out "variational.svg"
+set xlabel "α"
+set ylabel "Energy"
+set xzeroaxis
+set yzeroaxis
+set tics out
+set key bottom right
+plot "results.txt" with lines

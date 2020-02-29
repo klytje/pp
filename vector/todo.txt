@@ -1,0 +1,1 @@
+- add the required methods to the interface, and implement them in the main class accordingly. Could be done simply by moving the interface into the main file.

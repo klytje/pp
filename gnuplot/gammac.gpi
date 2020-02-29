@@ -1,0 +1,9 @@
+set encoding utf8
+set title "Complex gamma function"
+set term svg
+set out "gammac.svg"
+set xlabel "real axis"
+set ylabel "imaginary axis"
+set zlabel "Gamma(x + iy)" rotate by 90
+set tics out
+splot "gammac.txt" with lines

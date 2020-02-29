@@ -1,0 +1,12 @@
+set encoding utf8
+set title "Gamma function"
+set term svg
+set out "gamma.svg"
+set xlabel "x"
+set ylabel "y"
+set xzeroaxis
+set yzeroaxis
+set tics out
+set key bottom right
+plot "gamma.txt" with lines title "gamma(x)", \
+"gamma_table.txt" with points pt 7 title "tabulated"

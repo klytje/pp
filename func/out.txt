@@ -1,0 +1,7 @@
+Integral function    | a          | b          | result     | expected  
+log(x)/sqrt(x)       | 0.000      | 1.000      | -4.000     | -4.000    
+exp(-x²)             | -Infinity  | Infinity   | 1.772      | 1.772     
+ln(1/x)^4            | 0.000      | 1.000      | 24.000     | 24.000    
+sqrt(x)exp(-x))      | 0.000      | Infinity   | 0.886      | 0.886     
+x³/(exp(x) - 1)      | 0.000      | Infinity   | 6.494      | 6.494     
+sin²(x)/x²           | 0.000      | Infinity   | 1.571      | 1.571     
