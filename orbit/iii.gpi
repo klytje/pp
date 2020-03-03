@@ -1,0 +1,7 @@
+set encoding utf8
+set title "Exercise iii"
+set term svg
+set out "iii.svg"
+set xlabel "x"
+set ylabel "y"
+plot "iii.txt" using (1/$2)*sin($1):(1/$2)*cos($1) with lines 

@@ -1,2 +1,0 @@
-- maybe move the reference table values into the makefile, so everything can be compiled from a simple 'make' command
-- apparently he added some stuff to the complex gamma exercise, which is not yet implemented
