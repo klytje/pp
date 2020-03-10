@@ -1,0 +1,10 @@
+set encoding utf8 
+set term pdf
+set out "spiral.pdf"
+
+set title "Euler spiral"
+set xlabel "x"
+set ylabel "y"
+set xzeroaxis
+set yzeroaxis
+plot "out.txt" with lines notitle
