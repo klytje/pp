@@ -1,0 +1,7 @@
+set encoding utf8
+set title "Linear interpolation test"
+set term svg
+set out "linear.svg"
+set xlabel "x"
+set ylabel "y"
+plot 'linear.txt' using 1:2 with lines title 'data set', '' using 1:3 with lines title 'integral'

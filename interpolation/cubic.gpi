@@ -1,0 +1,7 @@
+set encoding utf8
+set title "Cubic interpolation test"
+set term svg
+set out "cubic.svg"
+set xlabel "x"
+set ylabel "y"
+plot 'cubic.txt' using 1:2 with lines title 'data set', '' using 1:3 with lines title 'integral', '' using 1:4 with lines title 'differential'

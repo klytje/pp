@@ -1,0 +1,7 @@
+set encoding utf8
+set title "Quadratic interpolation test"
+set term svg
+set out "quadraticsin.svg"
+set xlabel "x"
+set ylabel "y"
+plot 'quadratic.txt' using 1:5 with lines title 'data set', '' using 1:6 with lines title 'integral', '' using 1:7 with lines title 'differential', '' using 1:8 with lines title 'exact integral', '' using 1:9 with lines title 'exact differential'
