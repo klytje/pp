@@ -1,0 +1,12 @@
+set encoding utf8
+set title "Error dependence on N"
+set term svg
+set out "dep.svg"
+set xlabel "N"
+set ylabel "error"
+
+set style line 1 lt 2 lc rgb "black" lw 4 # supposed to be dashed, but apparently that does not work with svg
+set style line 2 lt 2 lc rgb "red" lw 1
+set style line 3 pt 7 ps 0.5 lc rgb "black" # pt 7 is filled circle, ps the size
+
+plot "dep.txt" using 1:2 with points ls 3 title "error", "" using 1:3 with lines ls 2 title "O(1/sqrt(N))"
