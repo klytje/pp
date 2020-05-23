@@ -1,4 +1,6 @@
-# Evaluating fit with parameters: lambda: -0.171, dlambda: 0.004
+# Evaluating fit with parameters: lambda: 0.1714, dlambda: 0.0035
+# This corresponds to a half-life of 4.0445 with uncertainty 0.0834
+# Compared to the listed Wikipedia value of: 3.6319(23)
 # x        y          y_up       y_low     
 1.000      119.976    124.047    116.038   
 1.140      117.131    121.166    113.231   

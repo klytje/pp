@@ -1,7 +1,6 @@
-dir=../
 libs=\
-	 $(dir)/libs/ode.cs\
-	 $(dir)/libs/vector.cs 
+	 ../libs/ode.cs\
+	 ../libs/vector.cs 
 
 all: sin.exe 
 	$(MAKE) -C sin

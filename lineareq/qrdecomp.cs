@@ -3,7 +3,23 @@ using static System.Math;
 using static System.Console;
 
 public class qr_decomp {
-	public class gs {
+public class gs {
+	matrix r;
+	matrix q;
+	public gs(matrix A) {
+		r = new matrix(A.size2, A.size2);
+		q = A.copy();
+		decomp(q, r);
+	}
+
+	public vector solve(vector b) {
+		return solve(q, r, b);
+	}
+
+	public matrix inverse() {
+		return inverse(q, r);
+	}
+
 	public static matrix inverse(matrix Q, matrix R) {
 		// basically we just solve m equations of the form Ax = e_i, and construct A^-1 from the m solutions to this equation
 		int n = Q.size1, m = Q.size2;
@@ -45,5 +61,5 @@ public class qr_decomp {
 		for (int i = 0; i < m; i++)
 			A[i] = A[i]/R[i, i]; // At this point, Q[i] = A[i]
 	}
-	}
+}
 }

@@ -11,7 +11,7 @@
 
 <g id="gnuplot_canvas">
 
-<rect x="0" y="0" width="600" height="480" fill="none"/>
+<rect x="0" y="0" width="600" height="480" fill="#ffffff"/>
 <defs>
 
 	<circle id='gpDot' r='0.5' stroke-width='0.5' stroke='currentColor'/>
@@ -31,7 +31,7 @@
 	<path id='gpPt13' stroke-width='0.222' stroke='currentColor' d='M0,1.330 L1.265,0.411 L0.782,-1.067 L-0.782,-1.076 L-1.265,0.411 z'/>
 	<use xlink:href='#gpPt13' id='gpPt14' fill='currentColor' stroke='none'/>
 	<filter id='textbox' filterUnits='objectBoundingBox' x='0' y='0' height='1' width='1'>
-	  <feFlood flood-color='white' flood-opacity='1' result='bgnd'/>
+	  <feFlood flood-color='#FFFFFF' flood-opacity='1' result='bgnd'/>
 	  <feComposite in='SourceGraphic' in2='bgnd' operator='atop'/>
 	</filter>
 	<filter id='greybox' filterUnits='objectBoundingBox' x='0' y='0' height='1' width='1'>
@@ -39,7 +39,7 @@
 	  <feComposite in='SourceGraphic' in2='grey' operator='atop'/>
 	</filter>
 </defs>
-<g fill="none" color="white" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
+<g fill="none" color="#FFFFFF" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M71.9,422.4 L80.9,422.4 M575.0,422.4 L566.0,422.4  '/>	<g transform="translate(63.6,426.3)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
@@ -152,7 +152,14 @@
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<use xlink:href='#gpPt6' transform='translate(103.3,114.6) scale(2.25)' color='rgb(255,   0,   0)'/>
+	<path stroke='rgb(255,   0,   0)'  d='M516.2,72.1 L558.4,72.1 M516.2,67.6 L516.2,76.6 M558.4,67.6 L558.4,76.6 M103.3,130.0 L103.3,99.2
+		M98.8,130.0 L107.8,130.0 M98.8,99.2 L107.8,99.2 M134.8,172.5 L134.8,146.2 M130.3,172.5 L139.3,172.5
+		M130.3,146.2 L139.3,146.2 M166.2,202.5 L166.2,179.3 M161.7,202.5 L170.7,202.5 M161.7,179.3 L170.7,179.3
+		M197.7,242.5 L197.7,223.5 M193.2,242.5 L202.2,242.5 M193.2,223.5 L202.2,223.5 M260.6,289.9 L260.6,276.0
+		M256.1,289.9 L265.1,289.9 M256.1,276.0 L265.1,276.0 M354.9,348.7 L354.9,340.9 M350.4,348.7 L359.4,348.7
+		M350.4,340.9 L359.4,340.9 M386.3,359.4 L386.3,352.8 M381.8,359.4 L390.8,359.4 M381.8,352.8 L390.8,352.8
+		M480.7,384.4 L480.7,380.4 M476.2,384.4 L485.2,384.4 M476.2,380.4 L485.2,380.4 M543.6,394.7 L543.6,391.7
+		M539.1,394.7 L548.1,394.7 M539.1,391.7 L548.1,391.7  '/>	<use xlink:href='#gpPt6' transform='translate(103.3,114.6) scale(2.25)' color='rgb(255,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(134.8,159.3) scale(2.25)' color='rgb(255,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(166.2,190.9) scale(2.25)' color='rgb(255,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(197.7,233.0) scale(2.25)' color='rgb(255,   0,   0)'/>
@@ -165,7 +172,7 @@
 </g>
 	</g>
 	<g id="gnuplot_plot_2" ><title>best fit</title>
-<g fill="none" color="white" stroke="rgb(255,   0,   0)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
+<g fill="none" color="#FFFFFF" stroke="rgb(255,   0,   0)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(507.9,94.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
@@ -188,7 +195,7 @@
 		L517.1,389.3 L521.5,390.1 L525.9,390.9 L530.3,391.6 L534.8,392.3 L539.2,393.1  '/></g>
 	</g>
 	<g id="gnuplot_plot_3" ><title>upper bound</title>
-<g fill="none" color="white" stroke="rgb(  0,   0,   0)" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
+<g fill="none" color="#FFFFFF" stroke="rgb(  0,   0,   0)" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(507.9,112.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
@@ -231,7 +238,7 @@
 		L481.9,385.2 L486.3,386.1 L490.7,387.0 L495.1,387.9 L499.5,388.7 L503.9,389.5 L508.3,390.3 L512.7,391.1
 		L517.1,391.9 L521.5,392.6 L525.9,393.3 L530.3,394.0 L534.8,394.7 L539.2,395.4  '/></g>
 	</g>
-<g fill="none" color="white" stroke="rgb(  0,   0,   0)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
+<g fill="none" color="#FFFFFF" stroke="rgb(  0,   0,   0)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>

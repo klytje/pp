@@ -45,18 +45,17 @@ public class ls {
 	public static fit qrfit(vector x, vector y, vector dy, Func<double, double>[] funcs) {
 		// we want to set the system up in a more familiar way
 		int n = x.size, m = funcs.Length;
-		matrix Q = new matrix(n, m);
-		matrix R = new matrix(m, m);
+		matrix A = new matrix(n, m);
 		vector b = new vector(n);
 		for (int i = 0; i < n; i++) {
 			b[i] = y[i]/dy[i]; // eq 7
 			for (int j = 0; j < m; j++)
-				Q[i, j] = funcs[j](x[i])/dy[i]; // eq 7
+				A[i, j] = funcs[j](x[i])/dy[i]; // eq 7
 		}
-		gs.decomp(Q, R); // set up Q and R
-		matrix Qi = gs.inverse(Q, R);
-		vector c = gs.solve(Q, R, b); // eq 8
-		matrix cov = Qi*Qi.transpose(); // eq 14
+		gs solver = new gs(A);
+		vector c = solver.solve(b);
+		gs covsolver = new gs(A.transpose()*A);
+		matrix cov = covsolver.inverse();
 		return new fit(c, cov, funcs); 
 	}
 }

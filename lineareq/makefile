@@ -1,10 +1,17 @@
+ libs=\
+	  ../libs/vector.cs\
+	  ../libs/matrix.cs 
+
 all: out.txt
 
-out.txt: qrtest.exe
+out.txt: main.exe
 	mono $< > out.txt
 
-qrtest.exe: qrtest.cs matrix.dll 
-	mcs -reference:matrix.dll $<
+main.exe: main.cs math.dll 
+	mcs -reference:math.dll $<
 
-matrix.dll: vector.cs matrix.cs qrdecomp.cs
+math.dll: $(libs) qrdecomp.cs
 	mcs -target:library -out:$@ $^
+
+clean: 
+	rm -f *.txt *.dll *.exe *.svg
