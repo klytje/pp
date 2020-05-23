@@ -3,22 +3,21 @@ using static System.Math;
 
 public class interpolate {
 	public class linear {
+
 		public static double spline(vector x, vector y, double z) {
 			int i = search(x, 0, x.size, z);
 			return y[i] + (y[i+1] - y[i])/(x[i+1] - x[i])*(z - x[i]);
 		}
 		
-		// I don't save the b list, so not sure how to implement this one analytically.
-		// Right now it just connects the data points with straight lines, and calculates
-		// the area underneath. 
 		public static double integrate(vector x, vector y, double z) {
 			int i = search(x, 0, x.size, z);
-			double A = 0; // area
-			for (int j = 0; j < i; j++) {
-				A += (x[j+1] - x[j])*y[j] + (x[j+1] - x[j])*(y[j+1] - y[j])/2;
+			double sum = 0; // area
+			for (int j = 0; j < i; j++) { 
+				double dx = x[j+1] - x[j];
+				sum += dx*y[j] + dx*(y[j+1] - y[j])/2;
 			}
-			A += (z - x[i])*y[i] + (z - x[i])*(spline(x, y, z) - y[i])/2;
-			return A;
+			sum += (z - x[i])*(y[i] + (spline(x, y, z) - y[i])/2);
+			return sum;
 		}
 	}
 	public class quadratic {
@@ -36,7 +35,7 @@ public class interpolate {
 			int i = search(x, 0, x.size, z);
 			double sum = 0, dx;
 			for (int j = 0; j < i; j++) {
-				dx = z - x[j];
+				dx = x[j+1] - x[j];
 				sum += y[j]*dx + b[j]*Pow(dx, 2)/2 + c[j]*Pow(dx, 3)/3;
 			}
 			dx = z - x[i];
@@ -46,6 +45,7 @@ public class interpolate {
 			int i = search(x, 0, x.size, z);
 			return b[i] + 2*c[i]*(z - x[i]);
 		}
+
 		private void setup() {
 			vector cseq = new vector(x.size); // front to back
 			vector crev = new vector(x.size); // back to front
