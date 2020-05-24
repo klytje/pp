@@ -1,32 +1,25 @@
-all: diatest.exe qbox.svg timecyclic.svg timerow.svg timeallrows.svg 
-	mono diatest.exe > diatest.txt 
+libs=\
+	 ../libs/vector.cs\
+	 ../libs/matrix.cs 
 
-timeallrows.svg: timeallrows.gpi timeallrows.exe 
-	mono timeallrows.exe > timeallrows.txt 
-	gnuplot $<
+all: main.exe qbox.svg
+	$(MAKE) -C timed 
+	mono $< > main.txt 
+
 qbox.svg: qbox.gpi qbox.exe
 	mono qbox.exe > qbox.txt 
 	gnuplot $<
-timecyclic.svg: timecyclic.gpi timecyclic.exe 
-	mono timecyclic.exe > timecyclic.txt 
-	gnuplot $<
-timerow.svg: timerow.gpi timerow.exe
-	mono timerow.exe > timerow.txt 
-	gnuplot $<
 
-timeallrows.exe: timeallrows.cs matrix.dll 
-	mcs -reference:matrix.dll $<
-timerow.exe: timerow.cs matrix.dll
-	mcs -reference:matrix.dll $<
-timecyclic.exe: timecyclic.cs matrix.dll 
-	mcs -reference:matrix.dll $< 
-qbox.exe: qbox.cs matrix.dll 
-	mcs -reference:matrix.dll $<
-diatest.exe: diatest.cs matrix.dll
-	mcs -reference:matrix.dll $< 
+timed.exe: timed.cs math.dll 
+	mcs -reference:math.dll $<
+qbox.exe: qbox.cs math.dll 
+	mcs -reference:math.dll $<
+main.exe: main.cs math.dll
+	mcs -reference:math.dll $< 
 
-matrix.dll: vector.cs matrix.cs jacobi.cs
+math.dll: $(libs) jacobi.cs
 	mcs -target:library -out:$@ $^
 
 clean:
+	$(MAKE) -C timed clean 
 	rm *.dll *.svg *.exe

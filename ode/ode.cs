@@ -5,18 +5,6 @@ using System.Collections;
 using System;
 
 public class ode {
-	// Dmitris code for debugging purposes
-	public static (vector, vector) rkstep23(Func<double, vector, vector> f, double x, vector y, double h) {
-		vector k0 = f(x, y);
-		vector k1 = f(x+h/2, y+h*k0/2);
-		vector k2 = f(x+3*h/4, y+3*h*k1/4);
-		vector ka = (2*k0 + 3*k1 + 4*k2)/9;
-		vector kb = k1;
-		vector yh = y + ka*h;
-		vector err = (ka - kb)*h;
-		return (yh, err);
-	}
-
 	/* param f: from the equation dydx = f(x, y)
 	 * param x: current x value
 	 * param y: other parameter values

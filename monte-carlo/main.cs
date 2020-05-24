@@ -20,7 +20,7 @@ class main {
 		(res, _) = mcint.plainmc(f, a, b, N);
 		WriteLine($"{"(pi³(1-cosx*cosy*cosz))⁻¹", -28} {0, -8} {PI, -8:F3} {exp, -8:F3} {res, -8:F3}");
 
-		WriteLine("\nError dependence on N");
+		WriteLine("\n\n# Error dependence on N");
 		WriteLine($"{"# N", -12} {"err", -12} {"sqrtN*c", -12}");
 		f = (x) => Sin(x[0])/x[0]; // same function as earlier
 		a = new vector(0.0); b = new vector(PI);

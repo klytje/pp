@@ -10,6 +10,7 @@ public class main {
 		};
 		vector x0 = new vector(1); x0[0] = 0; // start pos
 		vector root = roots.newton(f, x0);
+		WriteLine($"Testing with (2 - x)*(6 - x).");
 		root.print("The root is: ");
 		f(root).print("The function value at the root:");
 
@@ -19,6 +20,7 @@ public class main {
 		};
 		x0 = new vector(0, 0);
 		root = roots.newton(f, x0);
+		WriteLine($"\nTesting with (4 - x)*(6 - x), (y - x)*(y - 3)");
 		root.print("The roots are: ");
 		f(root).print("The function values at these roots: ");
 

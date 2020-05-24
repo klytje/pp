@@ -1,0 +1,19 @@
+set encoding utf8
+set term svg background rgb "white"
+set xlabel "x"
+set ylabel "y"
+
+set style line 1 lt 2 lc rgb "black" lw 2
+set style line 2 lt 2 lc rgb "red" lw 2
+
+set title "Time to diagonalize"
+set out "cyclic.svg"
+plot "time.txt" using 1:2 index 1 with lines ls 1 title "cyclic", "" using 1:3 index 1 with lines ls 2 title "O(n^3)"
+
+set title "Time to diagonalize"
+set out "row.svg"
+plot "time.txt" using 1:2 index 0 with lines ls 1 title "row-by-row (1)", "" using 1:3 index 0 with lines ls 2 title "O(n^2)"
+
+set title "Time to diagonalize"
+set out "allrows.svg"
+plot "time.txt" using 1:2 index 2 with lines ls 1 title "row-by-row (n)", "" using 1:3 index 2 with lines ls 2 title "O(n^3)"

@@ -1,20 +1,23 @@
-dir=$(HOME)/git/practical-programming/
+dir=..
 libs=\
 	$(dir)/ode/ode.cs\
 	$(dir)/lineareq/qrdecomp.cs\
 	$(dir)/libs/vector.cs\
 	$(dir)/libs/matrix.cs 
 
-all: test.exe hshoot.svg
-	mono test.exe > temp 
-	grep -A1000 'Hydrogen' temp > hshoot.txt
-	rm temp 
+all: main.exe hshoot.svg
+	echo See out.txt for the answers on problem a. 
 
-hshoot.svg: hshoot.gpi hshoot.txt 
+hshoot.svg: hshoot.gpi main.exe 
+	mono main.exe > out.txt  
+	grep -A1000 'Hydrogen' out.txt > hshoot.txt 
 	gnuplot $<
 
-test.exe: test.cs math.dll
+main.exe: main.cs math.dll
 	mcs -reference:math.dll $<
 
 math.dll: $(libs) root.cs 
 	mcs -target:library -out:$@ $^
+
+clean:
+	rm -f *.dll *.txt *.svg 

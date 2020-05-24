@@ -54,36 +54,4 @@ public class mini {
 		}
 		return (x, n);
 	}
-
-public static vector qnewton1 // heavily modified dmitris, used for debugging
-(Func<vector,double>f, vector x, double acc=1e-3){
-	double fx=f(x), fxs;
-	vector gx=gradient(f,x), s;
-	matrix B=matrix.id(x.size);
-	while(gx.norm() > acc){
-		vector Dx=-B*gx;
-		double min = 1.0/Pow(2, limit), l = 1.0; // l is lambda
-		do {// backtracking linesearch
-			s = Dx*l;
-			fxs=f(x+s);
-			if(l<min){
-				B = matrix.id(x.size);
-				break; // accept anyway
-			}
-			l/=2;
-		} while (!(fxs < fx + a*s.dot(gx))); // armijo condition
-		vector gxs=gradient(f,x+s);
-		vector y=gxs-gx;
-		vector u=s-B*y;
-		double denom = u.dot(y);
-		if(Abs(denom) > 1e-6){
-			B.update(u,u,1/denom); // SR1 update
-		}
-		x+=s;
-		gx=gxs;
-		fx=fxs;
-	}
-	return x;
-}//broyden
-
 }

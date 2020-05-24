@@ -3,7 +3,7 @@ using static System.Console;
 using System;
 
 public class jacobi {
-	public static double tol = 1e-6; // tolerance for deciding when to stop
+	public static double tol {get; set;} = 1e-6; // tolerance for deciding when to stop
 	public static (vector, matrix, int) lowest_eigens(matrix A, int r) {
 		int n = A.size1;
 		matrix V = new matrix(n, n); // eigenvectors

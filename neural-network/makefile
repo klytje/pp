@@ -1,4 +1,4 @@
-dir=$(HOME)/git/practical-programming/
+dir=..
 libs=\
 	$(dir)/minimization/mini.cs\
 	$(dir)/libs/vector.cs\
@@ -15,3 +15,6 @@ main.exe: main.cs math.dll
 
 math.dll: $(libs) nn.cs 
 	mcs -target:library -out:$@ $^
+
+clean: 
+	rm -f *.dll *.svg *.txt *.exe 

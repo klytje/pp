@@ -4,6 +4,8 @@ using static System.Console;
 
 public class qr_decomp {
 public class gs {
+	
+	// made a basic object so I don't have to remember how to do everything later
 	matrix r;
 	matrix q;
 	public gs(matrix A) {

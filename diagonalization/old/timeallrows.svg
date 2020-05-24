@@ -179,9 +179,9 @@
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0,   0,   0)'  d='M516.2,72.1 L558.4,72.1 M112.8,422.4 L137.2,422.4 L161.5,422.1 L185.8,421.7 L210.1,420.7 L234.5,419.6
-		L258.8,415.7 L283.1,411.8 L307.4,407.4 L331.8,399.1 L356.1,388.6 L380.4,369.2 L404.7,364.5 L429.1,329.1
-		L453.4,321.6 L477.7,281.2 L502.0,240.5 L526.4,178.0 L550.7,95.7  '/></g>
+	<path stroke='rgb(  0,   0,   0)'  d='M516.2,72.1 L558.4,72.1 M112.8,422.4 L137.2,422.4 L161.5,422.2 L185.8,421.7 L210.1,420.8 L234.5,418.9
+		L258.8,415.8 L283.1,411.3 L307.4,407.3 L331.8,397.7 L356.1,385.3 L380.4,373.2 L404.7,360.1 L429.1,338.2
+		L453.4,279.1 L477.7,275.9 L502.0,210.7 L526.4,149.6 L550.7,96.7  '/></g>
 	</g>
 	<g id="gnuplot_plot_2" ><title>O(n3)</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">

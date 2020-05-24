@@ -5,7 +5,7 @@ using System;
 
 public class main {
 	static void Main(string[] args) {
-		int n = 21;
+		int n = 99;
 		double s=1.0/(n+1);
 		matrix H = new matrix(n, n);
 		for (int i = 0; i < n-1; i++){
@@ -18,12 +18,20 @@ public class main {
 
 		(vector e, matrix V, int sweeps) = cyclic(H);
 		matrix VTHV = V.transpose()*H*V;
+		WriteLine("# Comparison with analytical values:");
 		WriteLine(string.Format("# {0, -2}  {1, -8} {2, -8}", "k", "calc", "exact"));
-		for (int k = 0; k < n/3; k++) {
+		for (int k = 0; k < 10; k++) {
 			double exact = PI*PI*(k+1)*(k+1);
 			double calculated = e[k];
 			WriteLine($"# {k, -2}: {calculated, -8:F3} {exact, -8:F3}");
 		}
+		
+		for (int k = 10; k < 60; k += 5) {
+			double exact = PI*PI*(k+1)*(k+1);
+			double calculated = e[k];
+			WriteLine($"# {k, -2}: {calculated, -8:F3} {exact, -8:F3}");
+		}
+		WriteLine("# It appears that an arbitrary precision can be achieved by increasing n.");
 		
 		double factor;
 		WriteLine("");

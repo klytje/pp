@@ -1,6 +1,6 @@
 set encoding utf8
 set title "Qbox eigenfunctions"
-set term svg
+set term svg background rgb "white"
 set out "qbox.svg"
 set xlabel "x"
 set ylabel "y"

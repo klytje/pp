@@ -22,7 +22,7 @@ public class main {
 
 		// Himmeblau's function
 		WriteLine("\nHimmelblau's function:");
-		WriteLine("Minimums: (3.0, 2.0), (-2.81, 3.13), (-3.78, -3.28), (3.58, -1.85)");
+		WriteLine("Reference minimums: (3.0, 2.0), (-2.81, 3.13), (-3.78, -3.28), (3.58, -1.85)");
 		f = delegate(vector z) {
 			double x = z[0], y = z[1];
 			return Pow(x*x + y - 11, 2) + Pow(x + y*y - 7, 2);
