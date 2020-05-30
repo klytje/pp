@@ -1,6 +1,6 @@
 set encoding utf8
 set title "SIR-modelling Corona in Denmark"
-set term svg
+set term svg background rgb "white"
 set out "sirmodel.svg"
 set xlabel "t"
 set ylabel "# people"

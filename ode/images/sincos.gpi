@@ -1,6 +1,6 @@
 set encoding utf8
 set title "y''(x) = -y(x)"
-set term svg
+set term svg background rgb "white"
 set out "sincos.svg"
 set xlabel "x"
 set ylabel "y"
