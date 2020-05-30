@@ -8,7 +8,7 @@ public class main {
 		matrix D = GenRandSymMatrix(n, n);
 		matrix A = D.copy();
 		A.print($"Symmetric matrix A:");
-		(vector e, matrix V, _) = cyclic(D);
+		(vector e, matrix V, int n1) = cyclic(D);
 		for (int i = 0; i < n; i++) {
 			for (int j = i+1; j < n; j++) {
 				D[j, i] = D[i, j]; // complete the matrix
@@ -21,10 +21,15 @@ public class main {
 		VTAV.print($"Matrix V^TAV:");
 		if (D.approx(VTAV)) WriteLine("V^TAV = D, test passed.");
 		else WriteLine("V^TAV != D, test failed.");
+		
+		matrix B = A.copy();
+		(vector e2, _, int n2) = lowest_eigens(A, 3);
+		e.print($"Eigenvalues from cyclic method found after {n1, 3} rotations:             ");
+		e2.print($"3 first eigenvalues from row-by-row method found after {n2, 3} rotations: ");
 
-		(vector e2, _, _) = lowest_eigens(A, 3);
-		e.print($"Eigenvalues from cyclic method: ");
-		e2.print($"Eigenvalues from row-by-row method: ");
+		(vector e3, _, int n3) = classic(B);
+		e3.print($"Eigenvalues from the classic method found after {n3, 3} rotations:        ");
+		WriteLine();
 	}
 
 	private static matrix GenRandSymMatrix(int n, int m) {

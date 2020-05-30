@@ -11,6 +11,8 @@ public class main {
 		timeCyclic();
 		WriteLine("\n");
 		timeAllRows();
+		WriteLine("\n");
+		timeClassic();
 	}
 
 	public static void timeRow() {
@@ -65,6 +67,24 @@ public class main {
 			WriteLine($"{n, -8} {timer.ElapsedMilliseconds, -8:F3} {Pow(n, 3)*scale, -8:F3}");
 			timer.Reset();
 		}
+	}
+
+	public static void timeClassic() {
+		//Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+		int max = 300; // max n
+		int step = 10;
+		double scale = 1.0/21600; // 300^3*scale = 1250
+		Stopwatch timer = new Stopwatch();
+		WriteLine(string.Format("# {0, -6} {1, -8} {2, -8}", "n", "cyclic", "n^3"));
+		for (int n = 10; n < max; n += step) {
+			matrix A = GenRandSymMatrix(n, n);
+			timer.Start();
+			classic(A);
+			timer.Stop();
+
+			WriteLine($"{n, -8} {timer.ElapsedMilliseconds, -8:F3} {Pow(n, 3)*scale, -8:F3}");
+			timer.Reset();
+		}	
 	}
 
 	private static matrix GenRandSymMatrix(int n, int m) {

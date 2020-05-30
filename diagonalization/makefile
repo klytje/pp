@@ -4,7 +4,9 @@ libs=\
 
 all: main.exe qbox.svg
 	$(MAKE) -C timed 
-	mono $< > main.txt 
+	mono $<
+	echo As the results are based on a random generator, repeatedly issuing the "make" command may be instructive. 
+	echo See the directory "timed" for the generated image files. 
 
 qbox.svg: qbox.gpi qbox.exe
 	mono qbox.exe > qbox.txt 
