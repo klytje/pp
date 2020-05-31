@@ -1,4 +1,5 @@
 using static System.Math;
+using static System.Double;
 using static System.Console;
 using System;
 
@@ -21,9 +22,26 @@ public class quadrature {
 	}
 
 	public class varTrans {
-		public static double integrate(Func<double, double> f, double a, double b, double sig, double eta) {
+		private static double cctrans(Func<double, double> f, double a, double b, double sig, double eta) {
 			Func<double, double> g = (t) => f((a+b)/2 + (b-a)/2*Cos(t))*Sin(t)*(b-a)/2; // the variable transform with appropriate scaling
 			return recAdapt.integrate(g, 0, PI, sig, eta);
+		}
+
+		public static double integrate(Func<double, double> f, double a, double b, double sig, double eta) {
+			if (b < a) return -integrate(f, b, a, sig, eta);
+			if (IsNegativeInfinity(a) && IsInfinity(b)) { // eq 57
+				Func<double, double> g = (t) => f(t/(1 - t*t))*(1 + t*t)/Pow(1 - t*t, 2);
+				return cctrans(g, -1, 1, sig, eta);
+			}
+			if (!IsNegativeInfinity(a) && IsInfinity(b)) { // eq 59
+				Func<double, double> g = (t) => f(a + t/(1 - t))*1/Pow(1 - t, 2);
+				return cctrans(g, 0, 1, sig, eta);
+			}
+			if (IsNegativeInfinity(a) && !IsInfinity(b)) { // eq 61
+				Func<double, double> g = (t) => f(b + t/(1 + t))*1/Pow(1 + t, 2);
+				return cctrans(g, -1, 0, sig, eta);
+			}
+			return cctrans(f, a, b, sig, eta);
 		}
 	}
 }
