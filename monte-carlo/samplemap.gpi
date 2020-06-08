@@ -1,0 +1,12 @@
+set encoding utf8
+set title "Sample map for a circle"
+set term pngcairo background rgb "white"
+set out "samplemap.png"
+set xlabel "x"
+set ylabel "y"
+
+set style line 1 lt 2 lc rgb "black" lw 4 # supposed to be dashed, but apparently that does not work with svg
+set style line 2 lt 2 lc rgb "red" lw 1
+set style line 3 pt 7 ps 0.001 lc rgb "#10000000" # pt 7 is filled circle, ps the size
+
+plot "data.txt" using 1:2 index 1 with points ls 3 title "sampled points"
