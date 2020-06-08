@@ -1,0 +1,13 @@
+set encoding utf8
+set title "Time dependency on guess eigenvalue µ"
+set term svg background rgb "white"
+set out "dep-mu.svg"
+set xlabel "Guess eigenvalue µ"
+set ylabel "# of iterations"
+
+set style line 1 pt 7 ps 0.2 lc rgb "black"
+set arrow from -1, graph 0 to -1, graph 1 nohead lc rgb "red"
+set arrow from 2, graph 0 to 2, graph 1 nohead lc rgb "red"
+set arrow from 8, graph 0 to 8, graph 1 nohead lc rgb "red"
+set logscale y
+plot "data.txt" using 1:2 index 0 with points ls 1 notitle 

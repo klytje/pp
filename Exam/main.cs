@@ -43,13 +43,14 @@ public class main {
 
 		// RANDOM TESTS
 		writetitle("\nRandom tests");
-		WriteLine("As one of the values of the eigenvector is scaled to 1, these can quickly be verified by eye.\nIf a result is colored red, it means that the iteration cap was reached, and so it is probably wrong.\nIf this happens, please just try again.");
+		WriteLine("As one of the values of the eigenvector is scaled to 1, these can quickly be verified by eye.");
 		A = genRandSymMatrix(3);
 		A.print("\nUsing the matrix A:");
 		WriteLine($"\n{"e guess", -10} {"e found", -10} {"v found", -22} {"Av", -22}");
 		for (int i = -10; i <= 10; i +=2) {
 			(e, b, iters) = eigens(A, i);
-			if (iters == (int) 1e6) {
+			// check if the iteration cap was reached. this shouldn't happen anymore
+			if (iters == inverse_iteration.imax) {
 				Console.ForegroundColor = ConsoleColor.DarkRed;
 				writeresult(i, e, b, A*b);
 				Console.ResetColor();
@@ -62,7 +63,7 @@ public class main {
 		WriteLine($"\n{"e guess", -10} {"e found", -10} {"v found", -15} {"Av", -15}");
 		for (int i = -10; i <= 10; i +=2) {
 			(e, b, iters) = eigens(A, i);
-			if (iters == (int) 1e6) {
+			if (iters == inverse_iteration.imax) {
 				Console.ForegroundColor = ConsoleColor.DarkRed;
 				writeresult(i, e, b, A*b);
 				Console.ResetColor();

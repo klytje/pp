@@ -6,11 +6,11 @@ using System;
 
 public class inverse_iteration {
 	private static Random rand = new Random();
-	private static double acc = 1e-3; // absolute error
-	private static double eps = 1e-3; // relative error
+	private static double acc = 1e-6; // absolute error
+	private static double eps = 1e-6; // relative error
 
-	// Maximum number of iterations. This value was chosen such that the random tests often succeed. 
-	private static int imax = (int) 1e6;
+	// maximum number of iterations. this value was chosen such that the random tests often succeed. 
+	public static int imax = (int) 1e6;
 
 	public static (double, vector, int) eigens(matrix A, double mu, bool verbose = false) {
 		vector b = new vector(A.size1);
@@ -20,7 +20,7 @@ public class inverse_iteration {
 	}
 
 	public static (double, vector, int) eigens(matrix A, double mu, vector b, bool verbose = false) {
-		// Initialize the required matrices and objects.
+		// initialize the required matrices and objects
 		matrix I = new matrix(A.size1, A.size1);
 		vector zero = new vector(A.size1);
 		for (int i = 0; i < I.size1; i++)
@@ -33,21 +33,19 @@ public class inverse_iteration {
 		if (Double.IsNaN(inv[0, 0]))
 			WriteLine("Matrix is singular, cannot continue.");
 
-		// Calculate the eigenvector through iteration. 
+		// calculate the eigenvector through iteration. 
 		int iterations = 0;
 		do{
 			iterations++;
 			b = bu;
 			C = (inv*b).norm();
 			bu = inv*b/C;
-			//vector abu2 = A*bu;
-			//WriteLine($"{iterations, -10} {getEigenval(A, abu2, bu)}");
 		} while (!sapprox(bu, b, verbose) && iterations < imax);
-		
-		// Calculate the eigenvalue. This is calculated as the average factor x required for Av = xv.
-		vector abu = A*bu;
-		return (getEigenval(A, abu, bu), rescale(bu), iterations);
+	
+		return (getEigenval(A, A*bu, bu), rescale(bu), iterations);
 	}
+
+	// calculates the eigenvalue. this is calculated as the average factor x required for Av = xv
 	private static double getEigenval(matrix A, vector abu, vector bu) {
 		double e = 0; // eigenvalue
 		int num = 0; // how many numbers have been averaged
@@ -71,41 +69,7 @@ public class inverse_iteration {
 		return false;
 	}
 
-	public static vector eigens2(matrix A, double mu) {
-		vector b = new vector(A.size1);
-		for (int i = 0; i < b.size; i++)
-			b[i] = rand.NextDouble();
-		return eigens2(A, mu, b);
-	}
-
-	public static vector eigens2(matrix A, double mu, vector b) {
-		matrix I = new matrix(A.size1, A.size1);
-		vector zero = new vector(A.size1);
-		for (int i = 0; i < I.size1; i++) {
-			I[i, i] = 1;
-		}
-
-		vector bu = b;
-		int count = 0;
-		matrix temp = A - mu*I;
-		gs QR = new gs(temp);
-		do {
-			count++;
-			b = bu;
-			bu = QR.solve(b);
-			if (count % 5 == 0) { // rayleigh update
-				mu = bu.dot(b)/b.dot(b);
-				temp = A - mu*I;
-				QR = new gs(temp);
-			}
-			b.print("b:");
-			bu.print("bu:");
-		} while (!approx(zero, (A - mu*I)*bu));
-		//} while (!approx(bu, b));
-		return rescale(bu);
-	}
-
-	// checks if two vectors are approximately equal. also returns true if either contains NaN. 
+	// checks if two vectors are approximately equal. also returns true if either contains NaN
 	private static bool approx(vector u, vector v) {
 		for (int i = 0; i < u.size; i++) {
 			if (Double.IsNaN(u[i]) || Double.IsNaN(v[i])) {
@@ -120,7 +84,7 @@ public class inverse_iteration {
 		return true;
 	}
 
-	// tries to rescale a given eigenvector such that the largest entry is 1
+	// rescales a vector such that the largest entry is 1
 	private static vector rescale(vector v) {
 		double largest = 0;
 		for (int i = 0; i < v.size; i++)
