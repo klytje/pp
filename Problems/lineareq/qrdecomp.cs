@@ -3,6 +3,56 @@ using static System.Math;
 using static System.Console;
 
 public class qr_decomp {
+public class givens {
+	matrix G;
+	int n, m;
+	public givens(matrix A) {
+		G = decomp(A.copy());
+	}
+
+	public matrix decomp(matrix A) {
+		n = A.size1; m = A.size2;
+		double Aqi, Api;
+		for (int p = 0; p < m; p++) {
+			for (int q = p+1; q < n; q++) {
+				double theta = Atan2(A[q, p], A[p, p]);
+				for (int i = p; i < m; i++) {
+					Api = A[p, i];
+					Aqi = A[q, i];
+					A[p, i] = Api*Cos(theta) + Aqi*Sin(theta);
+					A[q, i] = Aqi*Cos(theta) - Api*Sin(theta);
+				}
+				A[q, p] = theta; // replace with the rotation angle
+			}
+		}
+		return A;
+	}
+
+	public vector solve(vector b) {
+		double theta, xp, xq;
+		vector x = b.copy();
+
+		// start by applying the rotations to b
+		for (int p = 0; p < m; p++) {
+			for (int q = p+1; q < n; q++) {
+				theta = G[q, p];
+				xp = Cos(theta)*x[p] + Sin(theta)*x[q];
+				xq = Cos(theta)*x[q] - Sin(theta)*x[p];
+				x[p] = xp;
+				x[q] = xq;
+			}
+		}
+
+		// then make a back substitution to actually solve it
+		for (int i = m-1; i >= 0; i--) {
+			for (int j = i+1; j < m; j++)
+				x[i] -= G[i, j]*x[j];
+			x[i] /= G[i, i];
+		}
+		return x;
+	}	
+}
+
 public class gs {
 	
 	// made a basic object so I don't have to remember how to do everything later
@@ -38,9 +88,8 @@ public class gs {
 	public static vector solve(matrix Q, matrix R, vector b) {
 		// solve an equation of the form QRx = b
 		b = Q.transpose()*b;
-		vector x = new vector(b.size);
+		vector x = b.copy();
 		for (int i = x.size-1; i >= 0; i--) {
-			x[i] = b[i];
 			for (int j = i+1; j < b.size; j++)
 				x[i] -= R[i, j]*x[j];
 			x[i] /= R[i, i];
