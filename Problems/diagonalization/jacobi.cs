@@ -5,6 +5,14 @@ using System;
 public class jacobi {
 	public static double tol {get; set;} = 1e-6; // tolerance for deciding when to stop
 	private static int rotations;
+	
+	private static double rev = 1; // 1: lowest eigens, -1: highest eigens
+	public static (vector, matrix, int) highest_eigens(matrix A, int r) {
+		rev = -1;
+		(vector e, matrix V, int rotations) = lowest_eigens(A, r);
+		rev = 1;
+		return (e, V, rotations);
+	}
 
 	public static (vector, matrix, int) lowest_eigens(matrix A, int r) {
 		rotations = 0;
@@ -93,7 +101,7 @@ public class jacobi {
 	private static void rotate(matrix A, matrix V, int p, int q) {
 		rotations += 1;
 		int n = A.size1;
-		double theta = Atan2(2*A[p, q], A[q, q] - A[p, p])/2;
+		double theta = Atan2(rev*2*A[p, q], rev*(A[q, q] - A[p, p]))/2;
 		double c = Cos(theta), s = Sin(theta);
 		double App = A[p, p], Aqq = A[q, q], Apq = A[p, q];
 		A[p, p] = c*c*App + s*s*Aqq - 2*s*c*Apq;
@@ -125,7 +133,7 @@ public class jacobi {
 	private static void rotate(matrix A, matrix V, int p, int q, int[] qi) {
 		rotations += 1;
 		int n = A.size1;
-		double theta = Atan2(2*A[p, q], A[q, q] - A[p, p])/2;
+		double theta = Atan2(rev*2*A[p, q], rev*(A[q, q] - A[p, p]))/2;
 		double c = Cos(theta), s = Sin(theta);
 		double App = A[p, p], Aqq = A[q, q], Apq = A[p, q];
 		A[p, p] = c*c*App + s*s*Aqq - 2*s*c*Apq;

@@ -24,11 +24,13 @@ public class main {
 		
 		matrix B = A.copy();
 		(vector e2, _, int n2) = lowest_eigens(A, 3);
-		e.print($"Eigenvalues from cyclic method found after {n1, 3} rotations:             ");
-		e2.print($"3 first eigenvalues from row-by-row method found after {n2, 3} rotations: ");
+		(vector e4, _, int n4) = highest_eigens(A, 3);
+		e.print($"\nEigenvalues from cyclic method found after {n1, 3} rotations:               ");
+		e2.print($"3 lowest eigenvalues from row-by-row method found after {n2, 3} rotations:  ");
+		e4.print($"3 highest eigenvalues from row-by-row method found after {n4, 3} rotations: ");	
 
 		(vector e3, _, int n3) = classic(B);
-		e3.print($"Eigenvalues from the classic method found after {n3, 3} rotations:        ");
+		e3.print($"Eigenvalues from the classic method found after {n3, 3} rotations:          ");
 		WriteLine();
 	}
 
